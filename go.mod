@@ -165,3 +165,5 @@ replace github.com/ethereum/go-ethereum => github.com/crypto-org-chain/go-ethere
 replace github.com/cosmos/cosmos-sdk => github.com/cosmos/cosmos-sdk v0.44.2
 
 replace github.com/tharsis/ethermint => github.com/crypto-org-chain/ethermint v0.7.2-cronos-6
+
+replace github.com/tendermint/tendermint => github.com/JayT106/tendermint v0.34.14-big-genesis
