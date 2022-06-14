@@ -191,7 +191,7 @@ func (AppModule) RandomizedParams(r *rand.Rand) []simtypes.ParamChange {
 
 // RegisterStoreDecoder registers a decoder for cronos module's types
 func (am AppModule) RegisterStoreDecoder(sdr sdk.StoreDecoderRegistry) {
-	sdr[types.StoreKey] = simulation.NewDecodeStore()
+	// sdr[types.StoreKey] = simulation.NewDecodeStore()
 }
 
 // ProposalContents doesn't return any content functions for governance proposals.
@@ -206,7 +206,8 @@ func (AppModule) GenerateGenesisState(simState *module.SimulationState) {
 
 // WeightedOperations returns the all the cronos module operations with their respective weights.
 func (am AppModule) WeightedOperations(simState module.SimulationState) []simtypes.WeightedOperation {
-	return simulation.WeightedOperations(
-		simState.AppParams, simState.Cdc, &am.keeper,
-	)
+	// return simulation.WeightedOperations(
+	// 	simState.AppParams, simState.Cdc, &am.keeper,
+	// )
+	return nil
 }
