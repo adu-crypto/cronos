@@ -191,7 +191,7 @@ func (AppModule) RandomizedParams(r *rand.Rand) []simtypes.ParamChange {
 
 // RegisterStoreDecoder registers a decoder for cronos module's types
 func (am AppModule) RegisterStoreDecoder(sdr sdk.StoreDecoderRegistry) {
-	sdr[types.StoreKey] = simulation.NewDecodeStore()
+	// sdr[types.StoreKey] = simulation.NewDecodeStore()
 }
 
 // ProposalContents doesn't return any content functions for governance proposals.
