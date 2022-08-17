@@ -27,30 +27,30 @@ jobs:
     outputs:
       valid: ${{ steps.setValid.outputs.valid }}
     steps:
-      - uses: tspascoal/get-user-teams-membership@v1.0.2
-        id: checkMember
-        if: github.event_name == 'issue_comment'
-        with:
-          username: ${{ github.actor }}
-          team: 'cronos-dev'
-          GITHUB_TOKEN: ${{ secrets.ORG_READ_BOT_PAT }}
-      - name: Comment PR for authentication failure
-        uses: crypto-org-chain/actions-pull-request-add-comment@master
-        if: (steps.checkMember.outputs.isTeamMember == 'false') && (github.event_name == 'issue_comment')
-        with:
-          message: |
-            Sorry only cronos-dev team member could run simulations by '/runsim'. 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - uses: tspascoal/get-user-teams-membership@v1.0.2
+      #   id: checkMember
+      #   if: github.event_name == 'issue_comment'
+      #   with:
+      #     username: ${{ github.actor }}
+      #     team: 'cronos-dev'
+      #     GITHUB_TOKEN: ${{ secrets.ORG_READ_BOT_PAT }}
+      # - name: Comment PR for authentication failure
+      #   uses: crypto-org-chain/actions-pull-request-add-comment@master
+      #   if: (steps.checkMember.outputs.isTeamMember == 'false') && (github.event_name == 'issue_comment')
+      #   with:
+      #     message: |
+      #       Sorry only cronos-dev team member could run simulations by '/runsim'. 
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: set valid if it is push/pull_request event or check if it is triggered by team members with issue_comment
         id: setValid
         run: |
-          if [[ "${{ steps.checkUserMember.outputs.isTeamMember }}" == "true" ]]; then
+          # if [[ "${{ steps.checkUserMember.outputs.isTeamMember }}" == "true" ]]; then
+          #   echo "::set-output name=valid::true"
+          # elif [[ "${{ github.event_name }}" == "push" || "${{ github.event_name }}" == "pull_request" ]]; then
             echo "::set-output name=valid::true"
-          elif [[ "${{ github.event_name }}" == "push" || "${{ github.event_name }}" == "pull_request" ]]; then
-            echo "::set-output name=valid::true"
-          else  
-            echo "::set-output name=valid::false"
-          fi
+          # else  
+          #   echo "::set-output name=valid::false"
+          # fi
 
   build:
     runs-on: ubuntu-latest
